@@ -68,10 +68,10 @@ namespace BattleShipCore.Services
             Random rand = new Random(Guid.NewGuid().GetHashCode());
 
             bool vertical = rand.Next(0, 2) == 1;
-            startColumn = rand.Next(0, vertical ? Constants.BOARD_SIZE - 1 : Constants.BOARD_SIZE - 1 - ship.Size.ToInt());
-            startRow = rand.Next(0, vertical ? Constants.BOARD_SIZE - 1 - ship.Size.ToInt() : Constants.BOARD_SIZE - 1);
-            endColumn = vertical ? startColumn : startColumn + ship.Size.ToInt();
-            endRow = vertical ? startRow + ship.Size.ToInt() : startRow;
+            startColumn = rand.Next(0, vertical ? Constants.BOARD_SIZE : Constants.BOARD_SIZE - ship.Size.ToInt());
+            startRow = rand.Next(0, vertical ? Constants.BOARD_SIZE - ship.Size.ToInt() : Constants.BOARD_SIZE);
+            endColumn = vertical ? startColumn : startColumn + ship.Size.ToInt() - 1;
+            endRow = vertical ? startRow + ship.Size.ToInt() - 1 : startRow;
         }
     }
 }

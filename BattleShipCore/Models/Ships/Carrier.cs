@@ -6,7 +6,7 @@ namespace BattleShipCore.Models.Ships
 
     public class Carrier : BaseShip
     {
-        public Carrier() : base(BATTLESHIP_NAME, ShipSize.Battleship)
+        public Carrier() : base(BATTLESHIP_NAME, ShipSize.Carrier)
         {
         }
     }

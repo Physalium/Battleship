@@ -1,5 +1,8 @@
-﻿using BattleShipCore.Models.Board;
+﻿using BattleShipCore.Lib;
+using BattleShipCore.Models.Board;
 using BattleShipCore.Models.Ships;
+
+using static BattleShipCore.Constants;
 
 namespace BattleShipCore.Models
 {
@@ -7,8 +10,7 @@ namespace BattleShipCore.Models
     {
 
         public string Name { get; set; }
-        public PrimaryBoard PrimaryBoard { get; set; }
-        public TrackingBoard TrackingBoard { get; set; }
+        public GameBoard Board { get; set; }
 
         public List<BaseShip> Ships { get; set; }
 
@@ -20,12 +22,28 @@ namespace BattleShipCore.Models
             }
         }
 
-        public Player(string name, PrimaryBoard primaryBoard, TrackingBoard trackingBoard, List<BaseShip> ships)
+        public Player(string name, Board.GameBoard primaryBoard,  List<BaseShip> ships)
         {
             Name = name;
-            PrimaryBoard = primaryBoard;
-            TrackingBoard = trackingBoard;
+            Board = primaryBoard;
             Ships = ships;
+        }
+
+        public ShotStatus ProcessShotTaken(Position shotPosition, ref string sunkenShipName)
+        {
+            Tile hitTile = Board.Tiles.At(shotPosition);
+            if (hitTile.Ship == null)
+            {
+                return ShotStatus.Miss;
+            }
+
+            hitTile.IsHit = true;
+            hitTile.Ship.HitsTaken++;
+            if (hitTile.Ship.IsSunk)
+            {
+                sunkenShipName = hitTile.Ship.Name;
+            }
+            return ShotStatus.Hit;
         }
     }
 }

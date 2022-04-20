@@ -12,6 +12,11 @@ namespace BattleShipCore.Lib
             return (int)size;
         }
 
+        public static Tile At(this List<Tile> panels, Position position)
+        {
+            return panels.Where(x => x.Coordinates.Row == position.Row && x.Coordinates.Column == position.Column).First();
+        }
+
         public static Tile At(this List<Tile> panels, int row, int column)
         {
             return panels.Where(x => x.Coordinates.Row == row && x.Coordinates.Column == column).First();

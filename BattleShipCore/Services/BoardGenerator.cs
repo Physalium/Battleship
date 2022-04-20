@@ -6,16 +6,10 @@ namespace BattleShipCore.Services
 {
     public static class BoardGenerator
     {
-        public static TrackingBoard GenerateTrackingBoard()
+        public static GameBoard GeneratePrimaryBoard(List<Models.Ships.BaseShip> ships)
         {
             List<Tile> tiles = generateListOfEmptyTiles();
-            return new TrackingBoard(tiles);
-        }
-
-        public static PrimaryBoard GeneratePrimaryBoard(List<Models.Ships.BaseShip> ships)
-        {
-            List<Tile> tiles = generateListOfEmptyTiles();
-            PrimaryBoard board = new PrimaryBoard(tiles);
+            GameBoard board = new GameBoard(tiles);
 
             foreach (Models.Ships.BaseShip ship in ships)
             {

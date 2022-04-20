@@ -19,5 +19,10 @@
             PatrolBoat = 2
         }
         
+        public enum ShotStatus
+        {
+            Miss,
+            Hit
+        }
     }
 }

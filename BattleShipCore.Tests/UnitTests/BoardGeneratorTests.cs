@@ -13,41 +13,14 @@ namespace BattleShipCore.Tests.UnitTests
     public class BoardGeneratorTests
     {
         public List<BaseShip> ships;
-        public Models.Board.TrackingBoard trackingBoard;
-        public Models.Board.PrimaryBoard primaryBoard;
+        public Models.Board.GameBoard primaryBoard;
         public BoardGeneratorTests()
         {
             ships = ShipsGenerator.GenerateShips();
 
-            trackingBoard = BoardGenerator.GenerateTrackingBoard();
             primaryBoard = BoardGenerator.GeneratePrimaryBoard(ships);
         }
 
-        [Fact]
-        public void GenerateTrackingBoard_Generates_ProperAmountOfTiles()
-        {
-
-            var tilesCount = trackingBoard.Tiles.Count;
-            var expectedTilesCount = Constants.BOARD_SIZE * Constants.BOARD_SIZE;
-
-            Assert.Equal(expectedTilesCount, tilesCount);
-        }
-
-        [Fact]
-        public void GenerateTrackingBoard_Generates_UnoccupiedTiles()
-        {
-            Assert.All(trackingBoard.Tiles, tile => Assert.Null(tile.Ship));
-        }
-
-        [Fact]
-        public void GenerateTrackingBoard_Generates_TilesWithUniqueCoordinates()
-        {
-            var coordinates = trackingBoard.Tiles.Select(t => t.Coordinates).ToList();
-            var uniqueCoordinatesCount = coordinates.Distinct().Count();
-            var coordinatesCount = coordinates.Count;
-
-            Assert.Equal(uniqueCoordinatesCount, coordinatesCount);
-        }
         [Fact]
         public void GeneratePrimaryBoard_Generates_ProperAmountOfTiles()
         {

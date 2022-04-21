@@ -5,7 +5,7 @@ namespace BattleShipCore.Models.Ships
 {
     public class Submarine : BaseShip
     {
-        public Submarine() : base(BATTLESHIP_NAME, ShipSize.Submarine)
+        public Submarine() : base(SUBMARINE_NAME, ShipSize.Submarine)
         {
         }
     }

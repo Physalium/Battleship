@@ -5,7 +5,7 @@ namespace BattleShipCore.Models.Ships
 {
     public class Destroyer : BaseShip
     {
-        public Destroyer() : base(BATTLESHIP_NAME, ShipSize.Destroyer)
+        public Destroyer() : base(DESTROYER_NAME, ShipSize.Destroyer)
         {
         }
     }

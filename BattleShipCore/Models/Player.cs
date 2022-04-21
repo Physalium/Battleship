@@ -32,12 +32,12 @@ namespace BattleShipCore.Models
         public ShotStatus ProcessShotTaken(Position shotPosition, ref string sunkenShipName)
         {
             Tile hitTile = Board.Tiles.At(shotPosition);
+            hitTile.IsHit = true;
             if (hitTile.Ship == null)
             {
                 return ShotStatus.Miss;
             }
 
-            hitTile.IsHit = true;
             hitTile.Ship.HitsTaken++;
             if (hitTile.Ship.IsSunk)
             {

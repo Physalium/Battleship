@@ -8,15 +8,33 @@ namespace BattleShipCore.Services
         public static Position Fire(Player firingPlayer, Player firedUponPlayer)
         {
             // simulate basic AI by first trying to sink damaged enemy ships 
-            var damagedShipTile = firedUponPlayer.Board.Tiles.FirstOrDefault(t => t.IsHit && t.Ship != null && !t.Ship.IsSunk);
-            if (damagedShipTile != null)
+            var seekingShot = FireSeekingShot(firedUponPlayer);
+            if(seekingShot != null)
             {
-                Random rand = new Random(Guid.NewGuid().GetHashCode());
-                //var shotPosition = damagedShipTile.Coordinates.
+                return seekingShot;
             }
 
             // scan opponent board by firing in a checkboard pattern
             return FireScanningShot(firedUponPlayer);
+        }
+
+        private static Position? FireSeekingShot(Player firedUponPlayer)
+        {
+            var damagedShipTiles = firedUponPlayer.Board.Tiles.Where(t => t.IsHit && t.Ship != null && !t.Ship.IsSunk).ToList();
+            foreach (var tile in damagedShipTiles)
+            {
+                var fireCandidates = firedUponPlayer.Board.GetNotHitNeighbors(tile.Coordinates);
+                if (fireCandidates.Count == 0)
+                {
+                    continue;
+                }
+
+                Random rand = new Random(Guid.NewGuid().GetHashCode());
+                var randomPositionIndex = rand.Next(fireCandidates.Count);
+                return fireCandidates[randomPositionIndex].Coordinates;
+            }
+
+            return null;
         }
 
         private static Position FireScanningShot(Player firedUponPlayer)

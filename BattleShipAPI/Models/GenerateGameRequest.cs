@@ -1,6 +1,6 @@
 ﻿namespace BattleShipAPI.Models
 {
-    public record GenerateGameRequest(string firstPlayerName, string secondPlayerName)
+    public record GenerateGameRequest(string? firstPlayerName = null, string? secondPlayerName = null)
     {
     }
 }

@@ -19,7 +19,7 @@ namespace BattleShipAPI.Endpoints
             services.AddScoped<IGameGenerationService, GameGenerationService>();
         }
 
-        private static async Task<IResult> GenerateGame(string firstPlayerName, string secondPlayerName, IGameGenerationService service, IValidator<GenerateGameRequest> validator)
+        private static async Task<IResult> GenerateGame( IGameGenerationService service, IValidator<GenerateGameRequest> validator, string? firstPlayerName = null, string? secondPlayerName = null)
         {
             var request = new GenerateGameRequest(firstPlayerName, secondPlayerName);
             var validationResult = validator.Validate(request);

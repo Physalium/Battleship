@@ -12,6 +12,10 @@ namespace BattleShipCore.Models.Board
         public bool IsHit { get; set; }
         public bool IsInCheckerboardPattern { get; set; }
 
+        public Tile()
+        {
+
+        }
         public Tile(Position position, BaseShip? ship = null)
         {
             Coordinates = position;

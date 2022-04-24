@@ -1,6 +1,10 @@
 ﻿
 using BattleShipCore.Models.Board;
 
+using Newtonsoft.Json;
+
+using System.Text.Json;
+
 using static BattleShipCore.Constants;
 
 namespace BattleShipCore.Lib
@@ -28,6 +32,17 @@ namespace BattleShipCore.Lib
                                      && x.Coordinates.Column >= startColumn
                                      && x.Coordinates.Row <= endRow
                                      && x.Coordinates.Column <= endColumn).ToList();
+        }
+
+        public static T Clone<T>(this T source)
+        {
+            var serializerSettings = new Newtonsoft.Json.JsonSerializerSettings
+            {
+                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto,
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+            };
+            var serialized = JsonConvert.SerializeObject(source, serializerSettings);
+            return JsonConvert.DeserializeObject<T>(serialized, serializerSettings);
         }
     }
 }

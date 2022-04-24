@@ -9,7 +9,6 @@ namespace BattleShipCore.Models.Ships
         public ShipSize Size { get; set; }
         public int HitsTaken { get; set; }
         public bool IsSunk => HitsTaken >= (int)Size;
-
         protected BaseShip(string name, ShipSize size)
         {
             Name = name;

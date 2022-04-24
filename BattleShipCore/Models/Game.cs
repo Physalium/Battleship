@@ -16,7 +16,7 @@ namespace BattleShipCore.Models
             Player1 = CreatePlayer(firstPlayerName);
             Player2 = CreatePlayer(secondPlayerName);
 
-            GameHistory = new GameHistory() { Player1 = Player1, Player2 = Player2 };
+            GameHistory = new GameHistory(Player1,Player2);
         }
 
         public Player CreatePlayer(string name)

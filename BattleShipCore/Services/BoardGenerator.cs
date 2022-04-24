@@ -32,7 +32,7 @@ namespace BattleShipCore.Services
                     tiles.Add(tile);
                 }
             }
-            return tiles;
+            return tiles.OrderBy(t=>t.Coordinates.Row* 10 + t.Coordinates.Column).ToList();
         }
 
         private static void PlaceShipRandomly(List<Tile> tiles, BaseShip ship)

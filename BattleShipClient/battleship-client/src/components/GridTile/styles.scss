@@ -1,12 +1,12 @@
-.tile{
-    height: 50px;
-    width: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: xx-large;
+.tile {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
 }
 
-.tile-ship{
-    background-color: rgb(50, 118, 195);
+.tile-ship {
+  background-color: rgb(50, 118, 195) !important;
 }

@@ -11,6 +11,7 @@ function GameContainer() {
   const [secondPlayer, setSecondPlayer] = useState<Player>();
   const [shotsArray, setShotsArray] = useState<Shot[]>();
   const [shotCount, setShotCount] = useState<number>(0);
+  const [isFirstPlayerTurn, setIsFirstPlayerTurn] = useState<boolean>(true);
 
   const onGenerate = () => {
     generateGameApi()
@@ -24,9 +25,27 @@ function GameContainer() {
   };
 
   const onNextMove = () => {
-    // let nextShot = shotsArray[shotCount];
-    // nextShot.hitPosition
+    if (!shotsArray) {
+      return;
+    }
+
+    let nextShot = shotsArray[shotCount];
+    let firedUponPlayer = isFirstPlayerTurn ? secondPlayer : firstPlayer;
+    let hitTile = firedUponPlayer?.board.tiles.find(
+      (t) =>
+        t.coordinates.column === nextShot.hitPosition.column &&
+        t.coordinates.row === nextShot.hitPosition.row
+    );
+    if (hitTile) {
+      //let player =
+      hitTile.isHit = true;
+      if (hitTile.ship) {
+        hitTile.ship.hitsTaken++;
+      }
+    }
+
     setShotCount(shotCount + 1);
+    setIsFirstPlayerTurn(!isFirstPlayerTurn);
   };
   return (
     <Container maxWidth="md">

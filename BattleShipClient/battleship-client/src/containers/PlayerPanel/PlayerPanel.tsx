@@ -34,6 +34,7 @@ function PlayerPanel(props: playerPanelProps) {
 
 export interface playerPanelProps {
   player: Player;
+  isGameFinished: boolean;
 }
 
 export default PlayerPanel;

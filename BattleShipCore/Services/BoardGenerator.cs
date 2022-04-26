@@ -13,7 +13,7 @@ namespace BattleShipCore.Services
 
             foreach (Models.Ships.BaseShip ship in ships)
             {
-                PlaceShipRandomly(tiles, ship);
+                PlaceShipRandomly(board, ship);
             }
 
             return board;
@@ -35,15 +35,15 @@ namespace BattleShipCore.Services
             return tiles.OrderBy(t=>t.Coordinates.Row* 10 + t.Coordinates.Column).ToList();
         }
 
-        private static void PlaceShipRandomly(List<Tile> tiles, BaseShip ship)
+        private static void PlaceShipRandomly(GameBoard board, BaseShip ship)
         {
             bool canBePlaced = false;
             while (!canBePlaced)
             {
                 GetRandomCoordinates(ship, out int startColumn, out int startRow, out int endColumn, out int endRow);
 
-                List<Tile> choosenTiles = tiles.Range(startRow, startColumn, endRow, endColumn);
-                if (choosenTiles.Any(t => t.Ship != null))
+                List<Tile> choosenTiles = board.Tiles.Range(startRow, startColumn, endRow, endColumn);
+                if (choosenTiles.Any(t => t.Ship != null || board.GetNeighbors(t.Coordinates).Any(n=>n.Ship != null)))
                 {
                     canBePlaced = false;
                     continue;

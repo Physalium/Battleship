@@ -20,6 +20,7 @@ namespace BattleShipCore.Services
 
         private static Position? FireSeekingShot(Player firedUponPlayer)
         {
+            // seeking shot scans all hit tiles, picks one of them and then check if any of it's neighbors are hit; if not - the method returns position of found neighbor
             var damagedShipTiles = firedUponPlayer.Board.Tiles.Where(t => t.IsHit && t.Ship != null && !t.Ship.IsSunk).ToList();
             foreach (var tile in damagedShipTiles)
             {

@@ -56,7 +56,9 @@ namespace BattleShipCore.Services
                 }
             }
         }
-
+        /// <summary>
+        /// Get random coordinates for ship placement, by randomly choosing ship orientation and then it's starting column and row
+        /// </summary>
         private static void GetRandomCoordinates(BaseShip ship, out int startColumn, out int startRow, out int endColumn, out int endRow)
         {
             Random rand = new Random(Guid.NewGuid().GetHashCode());

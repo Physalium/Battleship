@@ -9,6 +9,7 @@ namespace BattleShipCore.Models.Board
         {
             Tiles = tiles;
         }
+       
         public List<Tile> GetNeighbors(Position coordinates)
         {
             int row = coordinates.Row;

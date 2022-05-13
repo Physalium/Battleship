@@ -14,8 +14,8 @@ namespace BattleShipCore.Models.Board
 
         public Tile()
         {
-
         }
+
         public Tile(Position position, BaseShip? ship = null)
         {
             Coordinates = position;
@@ -23,6 +23,5 @@ namespace BattleShipCore.Models.Board
             IsHit = false;
             IsInCheckerboardPattern = (Coordinates.Row % 2 == 0 && Coordinates.Column % 2 == 0) || (Coordinates.Row % 2 == 1 && Coordinates.Column % 2 == 1);
         }
-
     }
 }

@@ -5,6 +5,7 @@ namespace BattleShipCore.Models.Board
     public class GameBoard
     {
         public List<Tile> Tiles { get; set; }
+
         public GameBoard(List<Tile> tiles)
         {
             Tiles = tiles;
@@ -41,4 +42,3 @@ namespace BattleShipCore.Models.Board
         }
     }
 }
-

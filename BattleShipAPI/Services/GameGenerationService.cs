@@ -19,5 +19,4 @@ public class GameGenerationService : IGameGenerationService
 
         return game.GameHistory;
     }
-
 }

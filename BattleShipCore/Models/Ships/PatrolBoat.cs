@@ -1,5 +1,4 @@
-﻿
-using static BattleShipCore.Constants;
+﻿using static BattleShipCore.Constants;
 
 namespace BattleShipCore.Models.Ships
 {

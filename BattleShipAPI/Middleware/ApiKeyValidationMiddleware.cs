@@ -4,10 +4,12 @@ public class ApiKeyValidationMiddleware
 {
     private readonly RequestDelegate _next;
     private const string APIKEYNAME = "ApiKey";
+
     public ApiKeyValidationMiddleware(RequestDelegate next)
     {
         _next = next;
     }
+
     public async Task InvokeAsync(HttpContext context)
     {
         if (!context.Request.Headers.TryGetValue(APIKEYNAME, out Microsoft.Extensions.Primitives.StringValues extractedApiKey))

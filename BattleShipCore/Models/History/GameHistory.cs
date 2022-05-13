@@ -16,7 +16,5 @@ namespace BattleShipCore.Models.History
         public List<ShotHistory> Shots { get; set; } = new List<ShotHistory>();
 
         public string WinnerName { get; set; }
-
-
     }
 }

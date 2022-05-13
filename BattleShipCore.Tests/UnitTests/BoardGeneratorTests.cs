@@ -13,6 +13,7 @@ namespace BattleShipCore.Tests.UnitTests
     {
         public List<BaseShip> ships;
         public Models.Board.GameBoard primaryBoard;
+
         public BoardGeneratorTests()
         {
             ships = ShipsGenerator.GenerateShips();

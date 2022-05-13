@@ -1,5 +1,4 @@
-﻿
-using BattleShipCore.Models.Board;
+﻿using BattleShipCore.Models.Board;
 
 using Newtonsoft.Json;
 

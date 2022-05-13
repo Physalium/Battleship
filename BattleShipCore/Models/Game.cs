@@ -59,7 +59,5 @@ namespace BattleShipCore.Models
 
             return GameHistory;
         }
-
-
     }
 }

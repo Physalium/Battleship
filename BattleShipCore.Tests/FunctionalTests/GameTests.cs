@@ -10,10 +10,12 @@ namespace BattleShipCore.Tests.FunctionalTests
     public class GameTests
     {
         public Game game;
+
         public GameTests()
         {
             game = new Game();
         }
+
         [Fact]
         public void Game_Initializes_PlayersBoards()
         {

@@ -7,7 +7,7 @@ namespace BattleShipCore.Services
     {
         public static Position Fire(Player firingPlayer, Player firedUponPlayer)
         {
-            // simulate basic AI by first trying to sink damaged enemy ships 
+            // simulate basic AI by first trying to sink damaged enemy ships
             Position? seekingShot = FireSeekingShot(firedUponPlayer);
             if (seekingShot != null)
             {

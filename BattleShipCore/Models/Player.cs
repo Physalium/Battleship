@@ -8,7 +8,6 @@ namespace BattleShipCore.Models
 {
     public class Player
     {
-
         public string Name { get; set; }
         public GameBoard Board { get; set; }
 
@@ -21,10 +20,11 @@ namespace BattleShipCore.Models
                 return Ships.All(x => x.IsSunk);
             }
         }
+
         public Player()
         {
-
         }
+
         public Player(string name, Board.GameBoard primaryBoard, List<BaseShip> ships)
         {
             Name = name;

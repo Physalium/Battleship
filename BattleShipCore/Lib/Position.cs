@@ -6,9 +6,9 @@ namespace BattleShipCore.Lib
 {
     public class Position
     {
-        public int Row { get; }
+        public int Row { get; set; }
 
-        public int Column { get; }
+        public int Column { get; set; }
 
         public Position(int row, int column)
         {

@@ -10,10 +10,10 @@ namespace BattleShipCore.Models.History
             Player2 = player2.Clone();
         }
 
-        public Player Player1 { get; set; }
-        public Player Player2 { get; set; }
+        public Player Player1 { get; }
+        public Player Player2 { get; }
 
-        public List<ShotHistory> Shots { get; set; } = new List<ShotHistory>();
+        public List<ShotHistory> Shots { get; } = new List<ShotHistory>();
 
         public string WinnerName { get; set; }
     }

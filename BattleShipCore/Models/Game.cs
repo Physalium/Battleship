@@ -6,9 +6,9 @@ namespace BattleShipCore.Models
 {
     public class Game
     {
-        public GameHistory GameHistory;
-        public Player Player1;
-        public Player Player2;
+        public GameHistory GameHistory { get; set; }
+        public Player Player1 { get; set; }
+        public Player Player2 { get; set; }
 
         public Game(string firstPlayerName = "Player 1", string secondPlayerName = "Player 2")
         {
@@ -44,7 +44,7 @@ namespace BattleShipCore.Models
 
         private void saveShotToHistory(Position shotCoordinates, Constants.ShotStatus shotStatus, string? sunkenShipName)
         {
-            var shotHistory = new ShotHistory() { HitPosition = shotCoordinates, WasHit = shotStatus == Constants.ShotStatus.Hit, SunkenShipName = sunkenShipName };
+            var shotHistory = new ShotHistory(shotCoordinates, shotStatus == Constants.ShotStatus.Hit, sunkenShipName);
             GameHistory.Shots.Add(shotHistory);
         }
 

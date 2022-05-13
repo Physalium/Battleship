@@ -32,21 +32,21 @@ namespace BattleShipCore.Models
             Ships = ships;
         }
 
-        public ShotStatus ProcessShotTaken(Position shotPosition, ref string sunkenShipName)
+        public (ShotStatus status, string? sunkenShipName) ProcessShotTaken(Position shotPosition)
         {
             Tile hitTile = Board.Tiles.At(shotPosition);
             hitTile.IsHit = true;
             if (hitTile.Ship == null)
             {
-                return ShotStatus.Miss;
+                return (ShotStatus.Miss,null);
             }
 
             hitTile.Ship.HitsTaken++;
             if (hitTile.Ship.IsSunk)
             {
-                sunkenShipName = hitTile.Ship.Name;
+                return (ShotStatus.Hit, hitTile.Ship.Name); 
             }
-            return ShotStatus.Hit;
+            return (ShotStatus.Hit, null);
         }
     }
 }

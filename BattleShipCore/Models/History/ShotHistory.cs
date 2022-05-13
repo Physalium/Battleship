@@ -14,6 +14,6 @@ namespace BattleShipCore.Models.History
         public Position HitPosition { get; set; }
         public bool WasHit { get; set; }
 
-        public string SunkenShipName { get; set; }
+        public string? SunkenShipName { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace BattleShipCore.Services
                     tiles.Add(tile);
                 }
             }
-            return tiles.OrderBy(t=>t.Coordinates.Row* 10 + t.Coordinates.Column).ToList();
+            return tiles.OrderBy(t => t.Coordinates.Row * 10 + t.Coordinates.Column).ToList();
         }
 
         private static void PlaceShipRandomly(GameBoard board, BaseShip ship)
@@ -40,10 +40,10 @@ namespace BattleShipCore.Services
             bool canBePlaced = false;
             while (!canBePlaced)
             {
-                GetRandomCoordinates(ship, out int startColumn, out int startRow, out int endColumn, out int endRow);
+                (int startColumn, int startRow, int endColumn, int endRow) = GetRandomCoordinates(ship);
 
                 List<Tile> choosenTiles = board.Tiles.Range(startRow, startColumn, endRow, endColumn);
-                if (choosenTiles.Any(t => t.Ship != null || board.GetNeighbors(t.Coordinates).Any(n=>n.Ship != null)))
+                if (choosenTiles.Any(t => t.Ship != null || board.GetNeighbors(t.Coordinates).Any(n => n.Ship != null)))
                 {
                     canBePlaced = false;
                     continue;
@@ -59,15 +59,17 @@ namespace BattleShipCore.Services
         /// <summary>
         /// Get random coordinates for ship placement, by randomly choosing ship orientation and then it's starting column and row
         /// </summary>
-        private static void GetRandomCoordinates(BaseShip ship, out int startColumn, out int startRow, out int endColumn, out int endRow)
+        private static (int startColumn, int startRow, int endColumn, int endRow) GetRandomCoordinates(BaseShip ship)
         {
             Random rand = new Random(Guid.NewGuid().GetHashCode());
 
             bool vertical = rand.Next(0, 2) == 1;
-            startColumn = rand.Next(0, vertical ? Constants.BOARD_SIZE : Constants.BOARD_SIZE - ship.Size.ToInt());
-            startRow = rand.Next(0, vertical ? Constants.BOARD_SIZE - ship.Size.ToInt() : Constants.BOARD_SIZE);
-            endColumn = vertical ? startColumn : startColumn + ship.Size.ToInt() - 1;
-            endRow = vertical ? startRow + ship.Size.ToInt() - 1 : startRow;
+            int startColumn = rand.Next(0, vertical ? Constants.BOARD_SIZE : Constants.BOARD_SIZE - ship.Size.ToInt());
+            int startRow = rand.Next(0, vertical ? Constants.BOARD_SIZE - ship.Size.ToInt() : Constants.BOARD_SIZE);
+            int endColumn = vertical ? startColumn : startColumn + ship.Size.ToInt() - 1;
+            int endRow = vertical ? startRow + ship.Size.ToInt() - 1 : startRow;
+
+            return (startColumn, startRow, endColumn, endRow);
         }
     }
 }

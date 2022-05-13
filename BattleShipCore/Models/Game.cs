@@ -38,13 +38,12 @@ namespace BattleShipCore.Models
             void FireOneShot(Player firingPlayer, Player firedUponPlayer)
             {
                 Lib.Position shotCoordinates = ShootingAI.Fire(firingPlayer, firedUponPlayer);
-                string? sunkenShipName = null;
-                Constants.ShotStatus shotStatus = firedUponPlayer.ProcessShotTaken(shotCoordinates, ref sunkenShipName);
+                (Constants.ShotStatus shotStatus, string? sunkenShipName) = firedUponPlayer.ProcessShotTaken(shotCoordinates);
                 saveShotToHistory(shotCoordinates, shotStatus, sunkenShipName);
             }
         }
 
-        private void saveShotToHistory(Position shotCoordinates, Constants.ShotStatus shotStatus, string sunkenShipName)
+        private void saveShotToHistory(Position shotCoordinates, Constants.ShotStatus shotStatus, string? sunkenShipName)
         {
             ShotHistory shotHistory = new ShotHistory() { HitPosition = shotCoordinates, WasHit = shotStatus == Constants.ShotStatus.Hit, SunkenShipName = sunkenShipName };
             GameHistory.Shots.Add(shotHistory);

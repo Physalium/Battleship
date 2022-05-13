@@ -9,7 +9,7 @@ namespace BattleShipCore.Services
         public static GameBoard GeneratePrimaryBoard(List<Models.Ships.BaseShip> ships)
         {
             List<Tile> tiles = generateListOfEmptyTiles();
-            GameBoard board = new GameBoard(tiles);
+            var board = new GameBoard(tiles);
 
             foreach (Models.Ships.BaseShip ship in ships)
             {
@@ -21,14 +21,14 @@ namespace BattleShipCore.Services
 
         private static List<Tile> generateListOfEmptyTiles()
         {
-            List<Tile> tiles = new List<Tile>();
+            var tiles = new List<Tile>();
 
             for (int column = 0; column < Constants.BOARD_SIZE; column++)
             {
                 for (int row = 0; row < Constants.BOARD_SIZE; row++)
                 {
-                    Position position = new Position(row, column);
-                    Tile tile = new Tile(position);
+                    var position = new Position(row, column);
+                    var tile = new Tile(position);
                     tiles.Add(tile);
                 }
             }
@@ -61,7 +61,7 @@ namespace BattleShipCore.Services
         /// </summary>
         private static (int startColumn, int startRow, int endColumn, int endRow) GetRandomCoordinates(BaseShip ship)
         {
-            Random rand = new Random(Guid.NewGuid().GetHashCode());
+            var rand = new Random(Guid.NewGuid().GetHashCode());
 
             bool vertical = rand.Next(0, 2) == 1;
             int startColumn = rand.Next(0, vertical ? Constants.BOARD_SIZE : Constants.BOARD_SIZE - ship.Size.ToInt());

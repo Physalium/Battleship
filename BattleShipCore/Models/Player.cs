@@ -25,7 +25,7 @@ namespace BattleShipCore.Models
         {
 
         }
-        public Player(string name, Board.GameBoard primaryBoard,  List<BaseShip> ships)
+        public Player(string name, Board.GameBoard primaryBoard, List<BaseShip> ships)
         {
             Name = name;
             Board = primaryBoard;
@@ -38,13 +38,13 @@ namespace BattleShipCore.Models
             hitTile.IsHit = true;
             if (hitTile.Ship == null)
             {
-                return (ShotStatus.Miss,null);
+                return (ShotStatus.Miss, null);
             }
 
             hitTile.Ship.HitsTaken++;
             if (hitTile.Ship.IsSunk)
             {
-                return (ShotStatus.Hit, hitTile.Ship.Name); 
+                return (ShotStatus.Hit, hitTile.Ship.Name);
             }
             return (ShotStatus.Hit, null);
         }

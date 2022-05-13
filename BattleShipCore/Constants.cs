@@ -18,7 +18,7 @@
             Submarine = Destroyer,
             PatrolBoat = 2
         }
-        
+
         public enum ShotStatus
         {
             Miss,

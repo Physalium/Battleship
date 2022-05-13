@@ -3,7 +3,6 @@ using BattleShipAPI.Middleware;
 
 using FluentValidation.AspNetCore;
 
-using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 
 using System.Reflection;
@@ -14,7 +13,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddCors(options =>
 {
-    var frontendURL = builder.Configuration.GetValue<string>("frontend_url");
+    string? frontendURL = builder.Configuration.GetValue<string>("frontend_url");
     options.AddPolicy(name: "BattleshipPolicy",
         builder =>
         {

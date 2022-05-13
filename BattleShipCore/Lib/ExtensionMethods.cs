@@ -3,8 +3,6 @@ using BattleShipCore.Models.Board;
 
 using Newtonsoft.Json;
 
-using System.Text.Json;
-
 using static BattleShipCore.Constants;
 
 namespace BattleShipCore.Lib
@@ -53,7 +51,7 @@ namespace BattleShipCore.Lib
                 TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto,
                 NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
             };
-            var serialized = JsonConvert.SerializeObject(source, serializerSettings);
+            string? serialized = JsonConvert.SerializeObject(source, serializerSettings);
             return JsonConvert.DeserializeObject<T>(serialized, serializerSettings);
         }
     }

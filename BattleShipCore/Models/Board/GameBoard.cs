@@ -9,12 +9,12 @@ namespace BattleShipCore.Models.Board
         {
             Tiles = tiles;
         }
-       
+
         public List<Tile> GetNeighbors(Position coordinates)
         {
             int row = coordinates.Row;
             int column = coordinates.Column;
-            List<Tile> panels = new List<Tile>();
+            var panels = new List<Tile>();
             if (column >= 1)
             {
                 panels.Add(Tiles.At(row, column - 1));

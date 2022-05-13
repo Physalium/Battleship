@@ -2,7 +2,6 @@ using BattleShipCore.Lib;
 using BattleShipCore.Models.Ships;
 using BattleShipCore.Services;
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,8 +23,8 @@ namespace BattleShipCore.Tests.UnitTests
         [Fact]
         public void GeneratePrimaryBoard_Generates_ProperAmountOfTiles()
         {
-            var tilesCount = primaryBoard.Tiles.Count;
-            var expectedTilesCount = Constants.BOARD_SIZE * Constants.BOARD_SIZE;
+            int tilesCount = primaryBoard.Tiles.Count;
+            int expectedTilesCount = Constants.BOARD_SIZE * Constants.BOARD_SIZE;
 
             Assert.Equal(expectedTilesCount, tilesCount);
         }
@@ -33,18 +32,18 @@ namespace BattleShipCore.Tests.UnitTests
         [Fact]
         public void GeneratePrimaryBoard_Generates_ProperAmountOfOccupiedTiles()
         {
-            var expectedOccupiedTilesCount = ships.Sum(s => s.Size.ToInt());
-            var occupiedTiles = primaryBoard.Tiles.Count(t => t.Ship != null);
+            int expectedOccupiedTilesCount = ships.Sum(s => s.Size.ToInt());
+            int occupiedTiles = primaryBoard.Tiles.Count(t => t.Ship != null);
 
-            Assert.Equal(expectedOccupiedTilesCount,occupiedTiles);
+            Assert.Equal(expectedOccupiedTilesCount, occupiedTiles);
         }
 
         [Fact]
         public void GeneratePrimaryBoard_Generates_TilesWithUniqueCoordinates()
         {
             var coordinates = primaryBoard.Tiles.Select(t => t.Coordinates).ToList();
-            var uniqueCoordinatesCount = coordinates.Distinct().Count();
-            var coordinatesCount = coordinates.Count;
+            int uniqueCoordinatesCount = coordinates.Distinct().Count();
+            int coordinatesCount = coordinates.Count;
 
             Assert.Equal(uniqueCoordinatesCount, coordinatesCount);
         }

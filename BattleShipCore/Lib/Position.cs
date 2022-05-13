@@ -14,7 +14,7 @@ namespace BattleShipCore.Lib
             Row = row;
             Column = column;
 
-            PositionValidator validator = new PositionValidator();
+            var validator = new PositionValidator();
             validator.ValidateAndThrow(this);
         }
 

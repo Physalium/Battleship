@@ -19,10 +19,10 @@ namespace BattleShipAPI.Endpoints
             services.AddScoped<IGameGenerationService, GameGenerationService>();
         }
 
-        private static async Task<IResult> GenerateGame( IGameGenerationService service, IValidator<GenerateGameRequest> validator, string? firstPlayerName = "Player 1", string? secondPlayerName = "Player 2")
+        private static async Task<IResult> GenerateGame(IGameGenerationService service, IValidator<GenerateGameRequest> validator, string? firstPlayerName = "Player 1", string? secondPlayerName = "Player 2")
         {
             var request = new GenerateGameRequest(firstPlayerName, secondPlayerName);
-            var validationResult = validator.Validate(request);
+            FluentValidation.Results.ValidationResult? validationResult = validator.Validate(request);
             if (!validationResult.IsValid)
             {
                 var errors = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
@@ -31,7 +31,7 @@ namespace BattleShipAPI.Endpoints
 
             try
             {
-                var response = await service.GenerateGameAndReturnHistory(request);
+                GameHistory? response = await service.GenerateGameAndReturnHistory(request);
                 return Results.Ok(response);
             }
             catch (Exception ex)

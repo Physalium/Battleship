@@ -1,5 +1,4 @@
 ﻿using BattleShipCore.Lib;
-using BattleShipCore.Models.Board;
 using BattleShipCore.Models.History;
 using BattleShipCore.Services;
 
@@ -16,7 +15,7 @@ namespace BattleShipCore.Models
             Player1 = CreatePlayer(firstPlayerName);
             Player2 = CreatePlayer(secondPlayerName);
 
-            GameHistory = new GameHistory(Player1,Player2);
+            GameHistory = new GameHistory(Player1, Player2);
         }
 
         public Player CreatePlayer(string name)
@@ -45,7 +44,7 @@ namespace BattleShipCore.Models
 
         private void saveShotToHistory(Position shotCoordinates, Constants.ShotStatus shotStatus, string? sunkenShipName)
         {
-            ShotHistory shotHistory = new ShotHistory() { HitPosition = shotCoordinates, WasHit = shotStatus == Constants.ShotStatus.Hit, SunkenShipName = sunkenShipName };
+            var shotHistory = new ShotHistory() { HitPosition = shotCoordinates, WasHit = shotStatus == Constants.ShotStatus.Hit, SunkenShipName = sunkenShipName };
             GameHistory.Shots.Add(shotHistory);
         }
 

@@ -12,7 +12,7 @@ namespace BattleShipCore.Tests.FunctionalTests
         public GameBoard board;
         public GameBoardTests()
         {
-            Game? game = new Game();
+            var game = new Game();
             board = game.Player1.Board;
         }
 

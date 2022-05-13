@@ -38,7 +38,7 @@ namespace BattleShipCore.Tests.FunctionalTests
         [Fact]
         public void Game_SavesShotsToHistory()
         {
-            Game newGame = new Game();
+            var newGame = new Game();
 
             newGame.PlayRound();
             newGame.PlayRound();
@@ -50,10 +50,10 @@ namespace BattleShipCore.Tests.FunctionalTests
         [Fact]
         public void Game_EndsWith_Winner()
         {
-            Game game = new Game();
+            var game = new Game();
 
             GameHistory history = game.PlayToEnd();
-            var winner = game.Player1.Name == history.WinnerName ? game.Player1 : game.Player2;
+            Player? winner = game.Player1.Name == history.WinnerName ? game.Player1 : game.Player2;
 
             Assert.True(history.WinnerName != null);
             Assert.NotNull(winner);
@@ -62,12 +62,12 @@ namespace BattleShipCore.Tests.FunctionalTests
         [Fact]
         public void Game_EndsWith_AllLosingSideShipsSunken()
         {
-            Game game = new Game();
+            var game = new Game();
 
             GameHistory history = game.PlayToEnd();
-            var loser = game.Player1.Name == history.WinnerName ? game.Player2 : game.Player1;
+            Player? loser = game.Player1.Name == history.WinnerName ? game.Player2 : game.Player1;
 
-            Assert.True(loser.Ships.All(s=>s.IsSunk));
+            Assert.True(loser.Ships.All(s => s.IsSunk));
         }
     }
 }

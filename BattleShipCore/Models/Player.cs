@@ -8,10 +8,10 @@ namespace BattleShipCore.Models
 {
     public class Player
     {
-        public string Name { get; }
-        public GameBoard Board { get; }
+        public string Name { get; set; }
+        public GameBoard Board { get; set; }
 
-        public List<BaseShip> Ships { get; }
+        public List<BaseShip> Ships { get; set; }
 
         public bool HasLost
         {

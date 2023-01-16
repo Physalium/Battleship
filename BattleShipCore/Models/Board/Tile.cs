@@ -5,7 +5,7 @@ namespace BattleShipCore.Models.Board
 {
     public class Tile
     {
-        public Position Coordinates { get; }
+        public Position Coordinates { get; set; }
 
         public BaseShip? Ship { get; set; }
 

@@ -8,7 +8,7 @@ public static class BoardGenerator
 {
    public static GameBoard GeneratePrimaryBoard(List<BaseShip> ships)
    {
-      List<Tile> tiles = generateListOfEmptyTiles();
+      List<Tile> tiles = GenerateListOfEmptyTiles();
       var board = new GameBoard(tiles);
 
       foreach (BaseShip ship in ships)
@@ -19,7 +19,7 @@ public static class BoardGenerator
       return board;
    }
 
-   private static List<Tile> generateListOfEmptyTiles()
+   private static List<Tile> GenerateListOfEmptyTiles()
    {
       var tiles = new List<Tile>();
 

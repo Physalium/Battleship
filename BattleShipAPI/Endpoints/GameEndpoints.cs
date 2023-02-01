@@ -31,7 +31,7 @@ public static class GameEndpoints
 
       try
       {
-         GameHistory? response = await service.GenerateGameAndReturnHistory(request);
+         GameHistory? response = service.GenerateGameAndReturnHistory(request);
          return Results.Ok(response);
       }
       catch (Exception ex)

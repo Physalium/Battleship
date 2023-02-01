@@ -37,11 +37,11 @@ public class Game
       {
          Position shotCoordinates = ShootingAI.Fire(firingPlayer, firedUponPlayer);
          (Constants.ShotStatus shotStatus, string? sunkenShipName) = firedUponPlayer.ProcessShotTaken(shotCoordinates);
-         saveShotToHistory(shotCoordinates, shotStatus, sunkenShipName);
+         SaveShotToHistory(shotCoordinates, shotStatus, sunkenShipName);
       }
    }
 
-   private void saveShotToHistory(Position shotCoordinates, Constants.ShotStatus shotStatus, string? sunkenShipName)
+   private void SaveShotToHistory(Position shotCoordinates, Constants.ShotStatus shotStatus, string? sunkenShipName)
    {
       var shotHistory = new ShotHistory(shotCoordinates, shotStatus == Constants.ShotStatus.Hit, sunkenShipName);
       GameHistory.Shots.Add(shotHistory);

@@ -5,5 +5,5 @@ namespace BattleShipAPI.Services;
 
 public interface IGameGenerationService
 {
-   Task<GameHistory> GenerateGameAndReturnHistory(GenerateGameRequest request);
+   GameHistory GenerateGameAndReturnHistory(GenerateGameRequest request);
 }

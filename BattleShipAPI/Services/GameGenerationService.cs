@@ -6,7 +6,7 @@ namespace BattleShipAPI.Services;
 
 public class GameGenerationService : IGameGenerationService
 {
-   public async Task<GameHistory> GenerateGameAndReturnHistory(GenerateGameRequest request)
+   public GameHistory GenerateGameAndReturnHistory(GenerateGameRequest request)
    {
       var game = new Game(request.firstPlayerName, request.secondPlayerName);
 

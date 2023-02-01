@@ -1,11 +1,10 @@
 ﻿using static BattleShipCore.Constants;
 
-namespace BattleShipCore.Models.Ships
+namespace BattleShipCore.Models.Ships;
+
+public class Battleship : BaseShip
 {
-    public class Battleship : BaseShip
-    {
-        public Battleship() : base(BATTLESHIP_NAME, ShipSize.Battleship)
-        {
-        }
-    }
+   public Battleship() : base(BATTLESHIP_NAME, ShipSize.Battleship)
+   {
+   }
 }

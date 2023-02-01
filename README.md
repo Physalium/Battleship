@@ -1,4 +1,4 @@
-# Battleship
+# Battleship by Karol Nawrot
 
 
 W celu wykonania zadania przyjąłem następujące założenia:

@@ -1,20 +1,19 @@
 ﻿using static BattleShipCore.Constants;
 
-namespace BattleShipCore.Models.Ships
+namespace BattleShipCore.Models.Ships;
+
+public abstract class BaseShip
 {
-    public abstract class BaseShip
-    {
-        public string Name { get; set; }
-        public ShipSize Size { get; set; }
-        public int HitsTaken { get; set; }
-        public bool IsSunk => HitsTaken >= (int)Size;
+   protected BaseShip(string name, ShipSize size)
+   {
+      Name = name;
+      Size = size;
 
-        protected BaseShip(string name, ShipSize size)
-        {
-            Name = name;
-            Size = size;
+      HitsTaken = 0;
+   }
 
-            HitsTaken = 0;
-        }
-    }
+   public string Name { get; set; }
+   public ShipSize Size { get; set; }
+   public int HitsTaken { get; set; }
+   public bool IsSunk => HitsTaken >= (int)Size;
 }
